@@ -25,6 +25,7 @@ export interface UtilsReturns{
   'CreateManualCallList':CreateManualCallListResponse
   'CreateCallList':CreateCallListResponse
   'StartNextCallTask':StartNextCallTaskResponse
+  'AppendToCallList':AppendToCallListResponse
   'GetCallLists':GetCallListsResponse
   'GetCallListDetails':GetCallListDetailsResponse
   'StopCallListProcessing':StopCallListProcessingResponse
@@ -1150,6 +1151,40 @@ export interface StartNextCallTaskResponse {
   */
   listId:number
 }
+
+export interface AppendToCallListRequest {
+  /**
+   *The list of the call list IDs separated by the ';' symbol
+   */
+  listId:number
+  /**
+   *Encoding of the output file. Default UTF-8
+   */
+  encoding?:string
+  /**
+   *Escape character for parsing csv
+   */
+  escape?:string
+  /**
+   *Separator values. The default is ';'
+   */
+  delimiter?:string
+}
+export interface AppendToCallListResponse {
+  /**
+   *true
+   */
+  result:boolean
+  /**
+   *The number of stored records
+   */
+  count:number
+  /**
+   *The list ID
+   */
+  listId:number
+}
+
 export interface GetCallListsRequest {
   /**
    *The list ID to filter. Can be a list separated by the ';' symbol. Use the 'all' value to select all lists
@@ -1274,6 +1309,7 @@ export interface CallListsInterface {
   createManualCallList: (request:CreateManualCallListRequest) => Promise<CreateManualCallListResponse>
   createCallList: (request:CreateCallListRequest) => Promise<CreateCallListResponse>
   startNextCallTask: (request:StartNextCallTaskRequest) => Promise<StartNextCallTaskResponse>
+  appendToCallList: (request:AppendToCallListRequest) => Promise<AppendToCallListResponse>
   getCallLists: (request:GetCallListsRequest) => Promise<GetCallListsResponse>
   getCallListDetails: (request:GetCallListDetailsRequest) => Promise<GetCallListDetailsResponse>
   stopCallListProcessing: (request:StopCallListProcessingRequest) => Promise<StopCallListProcessingResponse>

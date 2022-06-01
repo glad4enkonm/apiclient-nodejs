@@ -1,7 +1,7 @@
 {
-  "name": "@voximplant/apiclient-nodejs",
-  "version": "2.0.5",
-  "description": "Voximplant API client library",
+  "name": "@glad4enkonm/apiclient-nodejs",
+  "version": "2.0.6",
+  "description": "Voximplant API client library fork",
   "main": "dist/index.js",
   "files": [
     "dist",
